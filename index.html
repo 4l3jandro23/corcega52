@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Córcega 52</title>
+<meta name="description" content="Turnos de limpieza y lista de la compra del piso">
+<meta name="theme-color" content="#E7E0D2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141A1D" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Córcega 52">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="hero">
+  <div class="plaque">
+    <div class="eyebrow"><span id="weekLabel">Semana —</span><span class="sync" id="sync" role="status" aria-live="polite"><i></i><span>Conectando…</span></span></div>
+    <h1>Córcega 52</h1>
+  </div>
+</div>
+
+<!-- Puerta: código del piso -->
+<div class="wrap" id="gate" hidden>
+  <div class="gate">
+    <h2 id="gateTitle">Código del piso</h2>
+    <p id="gateText">Escribe el código que os habéis pasado por el grupo. Solo se pide una vez en cada móvil.</p>
+    <form id="gateForm" autocomplete="off">
+      <div class="add">
+        <input id="gateInput" type="password" inputmode="text" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="Código" aria-label="Código del piso" maxlength="60">
+        <button type="submit" id="gateBtn">Entrar</button>
+      </div>
+    </form>
+    <p class="gate-msg" id="gateMsg" role="alert"></p>
+    <div class="gate-out" id="gateOut" hidden>
+      <p>Pega esta línea en <b>config.js</b> (sustituyendo la que hay), súbelo y recarga:</p>
+      <pre id="gateLine"></pre>
+      <button type="button" class="link" id="gateCopy">Copiar</button>
+    </div>
+  </div>
+</div>
+
+<!-- App -->
+<div class="wrap" id="app" hidden>
+  <div class="dates" id="dateRange"></div>
+
+  <div class="picker" id="picker" role="group" aria-label="¿Quién eres?"></div>
+
+  <div id="mine" class="sync-dim"></div>
+
+  <section>
+    <div class="head"><h3>Esta semana</h3><span>Toca el círculo al terminar</span></div>
+    <div class="tasks sync-dim" id="tasks"></div>
+    <p class="daily"><b>Cada uno lo suyo, a diario:</b> platos, encimera y vitro al momento.</p>
+    <a class="wa" id="waBtn" target="_blank" rel="noopener">💬 Mandar turnos al grupo</a>
+  </section>
+
+  <section>
+    <div class="head"><h3>Falta en casa</h3><span>Papel, jabón, bolsas…</span></div>
+    <div class="box">
+      <div class="add">
+        <input id="addInput" type="text" placeholder="¿Qué se ha acabado?" maxlength="60" autocomplete="off" enterkeyhint="done" aria-label="Añadir a la lista">
+        <button id="addBtn" type="button">Añadir</button>
+      </div>
+      <div id="buyList" class="sync-dim"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><h3>Próximas semanas</h3></div>
+    <div class="cal">
+      <table>
+        <thead><tr><th>Lunes</th><th>🍽️</th><th>🚪</th><th>🚿</th><th>🗑️</th></tr></thead>
+        <tbody id="calBody"></tbody>
+      </table>
+    </div>
+    <p class="legend">🍽️ comedor + balcón · 🚪 pasillo, entrada y cocina · 🚿 lavabo · 🗑️ basura. Borde discontinuo = turno cambiado.</p>
+  </section>
+
+  <details>
+    <summary>Ajustes</summary>
+    <div class="srow">Lunes de la Semana 1 del ciclo:</div>
+    <div class="srow"><input type="date" id="epochInput"><button class="link" id="saveEpoch">Guardar para todos</button></div>
+    <div class="srow"><button class="link" id="resetChecks">Desmarcar todo lo de esta semana</button></div>
+    <div class="srow"><button class="link" id="forgetCode">Olvidar el código en este móvil</button></div>
+  </details>
+</div>
+
+<div class="toast" id="toast" role="alert" hidden></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script src="rotation.js"></script>
+<script src="db.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
