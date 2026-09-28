@@ -29,11 +29,24 @@
   </div>
 </div>
 
+<!-- Aviso para instalarla (solo iPhone en Safari, no instalada) -->
+<div class="wrap" id="installTip" hidden>
+  <div class="install">
+    <b>📲 Ponla en tu pantalla de inicio</b>
+    <ol>
+      <li>Toca <b>Compartir</b> <span class="ios-share" aria-hidden="true"></span> (abajo en Safari)</li>
+      <li>Baja y toca <b>«Añadir a pantalla de inicio»</b></li>
+      <li>Ábrela desde el icono nuevo</li>
+    </ol>
+    <button type="button" class="install-x" id="installClose" aria-label="Cerrar aviso">✕</button>
+  </div>
+</div>
+
 <!-- Puerta: código del piso -->
 <div class="wrap" id="gate" hidden>
   <div class="gate">
     <h2 id="gateTitle">Código del piso</h2>
-    <p id="gateText">Escribe el código que os habéis pasado por el grupo. Solo se pide una vez en cada móvil.</p>
+    <p id="gateText">Escribe el código que Alejandro ha mandado al grupo del piso. Solo se pide una vez.</p>
     <form id="gateForm" autocomplete="off">
       <div class="add">
         <input id="gateInput" type="password" inputmode="text" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="Código" aria-label="Código del piso" maxlength="60">

@@ -398,6 +398,15 @@
     });
   }
 
+  // Aviso "añádela a la pantalla de inicio": solo en iPhone/iPad con Safari y sin instalar
+  (function(){
+    var ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform==="MacIntel" && navigator.maxTouchPoints>1);
+    var installed = navigator.standalone || (window.matchMedia && matchMedia("(display-mode: standalone)").matches);
+    if(!ios || installed || safeGet("c52_tip_off")) return;
+    $("installTip").hidden = false;
+    $("installClose").addEventListener("click", function(){ $("installTip").hidden = true; safeSet("c52_tip_off","1"); });
+  })();
+
   if("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost" || location.hostname==="127.0.0.1")){
     navigator.serviceWorker.register("sw.js").catch(function(e){ console.warn("SW", e); });
   }
