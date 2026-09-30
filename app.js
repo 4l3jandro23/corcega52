@@ -4,6 +4,8 @@
   var ROOMIES = R.ROOMIES, TASKS = R.TASKS;
   var DEMO = new URLSearchParams(location.search).has("demo");
   var LS_WHO = "piso_who", LS_CODE = "c52_codigo";
+  // Para que Mi Espacio (tu otra app, en esta misma web) sepa dónde está esta y pueda enseñar tus turnos en su calendario.
+  try{ if(!DEMO) localStorage.setItem("piso_app_url", location.href.replace(/[#?].*$/, "").replace(/[^/]*$/, "")); }catch(e){}
 
   function pcls(name){ var i=ROOMIES.indexOf(name); return i<0 ? "" : "p"+i; }
   function ini(name){ return name ? name.charAt(0) : "?"; }

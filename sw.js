@@ -2,7 +2,7 @@
    Cachea SOLO la interfaz (HTML, CSS, JS, iconos, fuente, supabase-js) para que abra al instante.
    Los datos nunca pasan por aquí: las llamadas a Supabase van siempre a la red.
    Al cambiar cualquier archivo, sube la versión para que los móviles cojan lo nuevo. */
-var VERSION = "c52-v4";
+var VERSION = "c52-v5";
 var SHELL = [
   "./", "index.html", "styles.css", "config.js", "rotation.js", "db.js", "app.js", "manifest.json",
   "icons/icon.svg", "icons/icon-180.png", "icons/icon-192.png", "icons/icon-512.png",
